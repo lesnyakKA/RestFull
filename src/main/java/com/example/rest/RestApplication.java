@@ -21,6 +21,6 @@ public class RestApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		bookRepository.save(new Book("first", LocalDate.now()));
+
 	}
 }

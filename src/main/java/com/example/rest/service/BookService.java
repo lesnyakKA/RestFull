@@ -23,7 +23,13 @@ public class BookService {
     }
 
     public List<Book> findByPublicationDate(LocalDate date) {
-        return bookRepository.findByPublicationDate(date);
+        List<Book> list = (List<Book>) bookRepository.findAll();
+        for(Book item: list) {
+            if(!(item.getPublicationDate() == date)) {
+                list.remove(item);
+            }
+        }
+        return list;
     }
 
     public Optional<Book> findById(Long id) {
