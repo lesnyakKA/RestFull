@@ -32,7 +32,7 @@ public class BookController {
         return ResponseEntity.ok().body(book);
     }
 
-    @GetMapping("/{date}")
+    @PostMapping("/date")
     public List<Book> getByLocalDate(@RequestParam("date") LocalDate date) {
         return bookService.findByPublicationDate(date);
     }
