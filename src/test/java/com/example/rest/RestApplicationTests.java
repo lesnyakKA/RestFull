@@ -1,13 +1,19 @@
+
 package com.example.rest;
 
+import com.example.rest.controller.BookController;
+import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RestApplicationTests {
-
+public class RestApplicationTests {
+	@Autowired
+	private BookController bookController;
 	@Test
-	void contextLoads() {
+	public void contextLoads() throws Exception {
+		assertThat(bookController).isNotNull();
 	}
-
 }

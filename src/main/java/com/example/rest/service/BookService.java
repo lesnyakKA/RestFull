@@ -22,21 +22,39 @@ public class BookService {
         return (List<Book>) bookRepository.findAll();
     }
 
+//    public List<Book> findByPublicationDate(LocalDate date) {
+//        List<Book> list = (List<Book>) bookRepository.findAll();
+//        for(Book item: list) {
+//            if(!(item.getPublicationDate() == date)) {
+//                list.remove(item);
+//            }
+//        }
+//        return list;
+//    }
+
     public List<Book> findByPublicationDate(LocalDate date) {
-        List<Book> list = (List<Book>) bookRepository.findAll();
-        for(Book item: list) {
-            if(!(item.getPublicationDate() == date)) {
-                list.remove(item);
-            }
-        }
-        return list;
+        return bookRepository.findByPublicationDate(date);
+    }
+
+    public List<Book> findByTitleContaining(String title) {
+        return bookRepository.findByTitleContaining(title);
     }
 
     public Optional<Book> findById(Long id) {
        return bookRepository.findById(id);
     }
 
-    public void addBook(String title) {
-        bookRepository.save(new Book(title, LocalDate.now()));
+    public void addBook(Book book) {
+        bookRepository.save(book);
+    }
+
+    public void updateBookById (Long id, String title) {
+        Book book = bookRepository.findById(id).get();
+        book.setTitle(title);
+        bookRepository.save(book);
+    }
+
+    public void deleteById(Long id) {
+        bookRepository.deleteById(id);
     }
 }

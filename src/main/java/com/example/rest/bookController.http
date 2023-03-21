@@ -1,6 +1,40 @@
 GET http://localhost:8082/books/all
 Accept: application/json
+Content-Type: application/json
+
+{
+  "title": "Братья Карамазовы",
+  "publicationDate": "2012-02-12"
+}
 
 ###
-POST http://localhost:8082/path/date?publicationDate=2023-03-09
+GET http://localhost:8082/books/date?date=2016-02-12
 Accept: application/json
+
+###
+GET http://localhost:8082/books/title?title=Тест2
+Accept: application/json
+
+###
+POST http://localhost:8082/books/addBook/
+Accept: application/json
+Content-Type: application/json
+
+{
+"title": "Тест4",
+"publicationDate": "2019-02-12"
+}
+
+###
+
+PUT http://localhost:8082/books/update?id=19&title=ПОЛУЧИЛОСЬ
+Accept: application/json
+Content-Type: application/json
+
+###
+
+DELETE http://localhost:8082/books/delete?id=16
+Accept: application/json
+Content-Type: application/json
+
+###

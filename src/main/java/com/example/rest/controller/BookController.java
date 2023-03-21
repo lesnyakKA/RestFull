@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/books")
@@ -33,14 +34,29 @@ public class BookController {
         return ResponseEntity.ok().body(book);
     }
 
-    @PostMapping("/date")
-    public List<Book> getByLocalDate(@RequestParam("publicationDate")
+    @GetMapping("/date")
+    List<Book> getByLocalDate(@RequestParam("date")
                                      @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
         return bookService.findByPublicationDate(date);
     }
 
     @PostMapping("/addBook")
-    public void addBook(String title) {
-        bookService.addBook(title);
+    void addBook(@RequestBody Book book) {
+        bookService.addBook(book);
+    }
+
+    @GetMapping("/title")
+    List<Book> getByTitle(@RequestParam("title") String title) {
+        return bookService.findByTitleContaining(title);
+    }
+
+    @PutMapping("/update")
+    void updateById(@RequestParam("id") Long id, @RequestParam("title") String newTitle) {
+        bookService.updateBookById(id, newTitle);
+    }
+
+    @DeleteMapping("/delete")
+    void deleteById(@RequestParam("id") Long id) {
+        bookService.deleteById(id);
     }
 }

@@ -10,17 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.time.LocalDate;
 
 @SpringBootApplication
-public class RestApplication implements CommandLineRunner {
-
-	@Autowired
-	private BookRepository bookRepository;
+public class RestApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RestApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-
-	}
 }

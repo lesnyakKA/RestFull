@@ -13,4 +13,6 @@ public interface BookRepository extends CrudRepository<Book, Long> {
     List<Book> findByPublicationDate(LocalDate date);
 
     List<Book> findByTitleContaining(String title);
+
+//    void putById(Long id, String title);
 }
